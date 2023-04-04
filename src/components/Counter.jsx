@@ -1,4 +1,6 @@
 import React from "react";
+import attack from "../images/attack.png"
+import defend from "../images/defend.png"
 
 class Counter extends React.Component {
     constructor(props) {
@@ -30,10 +32,40 @@ class Counter extends React.Component {
     }
     render(){
         return (
-            <div className="row text-white" style={{padding: "1em"}}>
-                <h1>Counter: {this.state.count}</h1>
-                    <button onClick={this.handleAttack} style={{width:"200px"}}>+1</button>
-                    <button onClick={this.handleDefense} style={{width:"200px"}}>-1</button>
+            <div className="row text-white text-center" style={{padding: "1em"}}>
+                <h1>Game score: {this.state.count}</h1>
+                <p>You win at +20 points and lose at -20</p>
+                <p>Last Play: </p>
+                <h3>Game Status: </h3>
+                <div className="col-6 col-md-3 offset-md-3">
+                    <img
+                        style={{
+                            width: "100%",
+                            cursor: "pointer",
+                            border: "1px solid red"
+                        }}
+                        className="p-4 rounded" 
+                        src={attack} 
+                        onClick={this.handleAttack}
+                    />
+                </div>
+                <div className="col-6 col-md-3 offset-mr-3">
+                    <img
+                        style={{
+                            width: "100%",
+                            cursor: "pointer",
+                            border: "1px solid green"
+                        }}
+                        className="p-4 rounded" 
+                        src={defend}
+                        onClick={this.handleDefense}
+                    />
+                </div>
+                <div className="col-12 col-md-4 offset-md-4">
+                    <button className="btn btn-secondary w-100 mt-2">Random Play</button>
+                    <br />
+                    <button className="btn btn-warning w-100 mt-2">Reset</button>
+                </div>
             </div>
         )
     ;}
