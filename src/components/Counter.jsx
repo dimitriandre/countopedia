@@ -12,11 +12,21 @@ class Counter extends React.Component {
 
     handleAttack(){
         //alert("Attack clicked");
-        this.setState({ count: this.state.count + 1})
+        this.setState((previousState) => {
+            return {
+                count: previousState.count + 1,
+            };
+        });
+        //this.setState({ count: this.state.count + 1})
     }
     handleDefense(){
         //alert("Defense clicked");
-        this.setState({ count: this.state.count - 1})
+        this.setState((previousState) => {
+            return {
+                count: previousState.count - 1,
+            };
+        });
+        //this.setState({ count: this.state.count - 1})
     }
     render(){
         return (
