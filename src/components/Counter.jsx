@@ -12,23 +12,41 @@ class Counter extends React.Component {
         };
     }
 
-    handleAttack(){
+    handleAttack = () => {
         //alert("Attack clicked");
         this.setState((previousState) => {
+            let newCount = previousState.count + Math.round(Math.random() * 10);
             return {
-                count: previousState.count + 1,
+                count: newCount,
             };
         });
         //this.setState({ count: this.state.count + 1})
     }
-    handleDefense(){
+    handleDefense = () => {
         //alert("Defense clicked");
         this.setState((previousState) => {
+            let newCount = previousState.count - Math.round(Math.random() * 10);
             return {
-                count: previousState.count - 1,
+                count: newCount,
             };
         });
         //this.setState({ count: this.state.count - 1})
+    }
+    handleRandomPlay = () => {
+        let playMode = Math.round(Math.random());
+        if (playMode == 0) {
+            this.handleAttack();
+        } else{
+            this.handleDefense();
+        }
+    }
+    handleReset = () => {
+        //alert("Defense clicked");
+        this.setState(() => {
+            return {
+                count: 0,
+            };
+        });
     }
     render(){
         return (
@@ -62,9 +80,11 @@ class Counter extends React.Component {
                     />
                 </div>
                 <div className="col-12 col-md-4 offset-md-4">
-                    <button className="btn btn-secondary w-100 mt-2">Random Play</button>
+                    <button className="btn btn-secondary w-100 mt-2"
+                    onClick={this.handleRandomPlay}>Random Play</button>
                     <br />
-                    <button className="btn btn-warning w-100 mt-2">Reset</button>
+                    <button className="btn btn-warning w-100 mt-2"
+                    onClick={this.handleReset}>Reset</button>
                 </div>
             </div>
         )
